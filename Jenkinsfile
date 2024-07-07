@@ -22,22 +22,21 @@ pipeline {
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
                  script{
-                 docker.build("mk")
+                 app = docker.build("mk")
 	         
                  }
                }
             }
     }
-	 stage('Push') {
+	stage('Push') {
             steps {
-                script {
-                    // Push the image to Docker Hub
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerlogin') {
-                        docker.image("mani1765/mk").push()
+                script{
+                    docker.withRegistry('https://677554969074.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws-credentials') {
+                    app.push("latest")
                     }
                 }
             }
-        }
+    	}
 
 	
 	    
