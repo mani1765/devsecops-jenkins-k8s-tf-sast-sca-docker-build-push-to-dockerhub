@@ -23,7 +23,7 @@ pipeline {
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
                  script{
                  app =  docker.build("mk")
-	         app.push("latest")
+	         
                  }
                }
             }
