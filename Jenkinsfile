@@ -22,12 +22,22 @@ pipeline {
             steps { 
                withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
                  script{
-                 app =  docker.build("asg")
+                 app =  docker.build("mk")
 	         app.push("latest")
                  }
                }
             }
     }
+	 stage('Push') {
+            steps {
+                script {
+                    // Push the image to Docker Hub
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerlogin') {
+                        docker.image("mk").push("latest")
+                    }
+                }
+            }
+        }
 
 	
 	    
