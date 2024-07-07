@@ -33,7 +33,7 @@ pipeline {
                 script {
                     // Push the image to Docker Hub
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerlogin') {
-                        docker.image("mani1765/easybuggyapp").push()
+                        docker.image("mani1765/mk").push()
                     }
                 }
             }
