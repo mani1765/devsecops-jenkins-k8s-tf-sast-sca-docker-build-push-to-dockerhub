@@ -31,7 +31,7 @@ pipeline {
 	stage('Push') {
             steps {
                 script{
-                    docker.withRegistry('https://hub.docker.com/', 'dockerlogin') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerlogin') {
                     app.push("latest")
                     }
                 }
