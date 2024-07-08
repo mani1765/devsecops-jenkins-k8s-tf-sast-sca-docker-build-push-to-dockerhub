@@ -31,7 +31,7 @@ pipeline {
 	stage('Push') {
             steps {
                 script{
-                    docker.withRegistry('https://677554969074.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:aws-creds') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerlogin') {
                     app.push("latest")
                     }
                 }
