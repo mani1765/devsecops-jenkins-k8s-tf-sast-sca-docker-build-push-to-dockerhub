@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin') {
-                    app.docker.image("docker.io/asg:latest").push()
+                    app.docker.image("docker.io/asg").push(latest)
                     }
                 }
             }
